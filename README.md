@@ -1,45 +1,47 @@
-# Ansible Playbook – Infrastruktur Automatisierung
+# Ansible Projekt – Infrastruktur Automatisierung
 
 ## Ausführung
 
 Das Playbook wird mit folgendem Befehl gestartet:
 
+```bash
 ansible-playbook -i inventory/hosts.ini site.yml --ask-become-pass
+```
 
-Vor der Ausführung müssen ggf. Variablen in group_vars/all.yml angepasst werden.
+Vor der Ausführung müssen in der Datei group_vars/all.yml Variablen angepasst werden, zum Beispiel der Webseiten-Name oder Pfade wie /var/www/mywebsite. Diese Werte bestimmen, wie der Server konfiguriert wird.
 
----
+
 
 ## Wahlapplikationen
 
-### htop
+**htop**
+htop ist ein Tool zur Überwachung von Systemressourcen wie CPU und RAM. Ich habe es gewählt, um die Auslastung des Servers einfach und übersichtlich zu sehen. Meine Konfiguration installiert htop automatisch, sodass es direkt verwendet werden kann.
 
-htop ist ein Tool zur Überwachung von Prozessen und Systemleistung.
-Ich habe es gewählt, weil es eine übersichtliche Darstellung von CPU und RAM bietet.
+**vsftpd**
+vsftpd ist ein FTP-Server, mit dem Dateien übertragen werden können. Ich habe es gewählt, um eine zusätzliche Netzwerkfunktion auf meinem Server zu haben. Meine Konfiguration installiert und startet den FTP-Dienst, sodass er direkt verfügbar ist.
 
-### Wireshark
 
-Wireshark ist ein Netzwerk-Analyse-Tool.
-Ich habe es gewählt, um Netzwerkverkehr analysieren zu können.
-
----
 
 ## nmap-Ergebnis
+
+```bash
+nmap localhost
 
 PORT   STATE SERVICE
 22/tcp open  ssh
 80/tcp open  http
+21/tcp open  ftp
+```
 
-Kommentar:
-Die Ports 22 und 80 sind offen, da SSH und Apache aktiv sind.
-Andere Ports sind geschlossen, was der Firewall-Konfiguration entspricht.
+Offen sind die Ports 22 (SSH), 80 (HTTP) und 21 (FTP). Alle anderen Ports sind geschlossen. Das entspricht den UFW Regeln, da nur die benötigten Dienste erlaubt wurden und alles andere blockiert ist.
 
----
+
 
 ## Reflexion
 
-In diesem Projekt habe ich gelernt, wie man Infrastruktur mit Ansible automatisiert. Besonders schwierig war das Arbeiten mit YAML, da kleine Fehler grosse Probleme verursachen können. Ich hatte Probleme mit der Apache-Konfiguration, weil ein Tippfehler den Dienst am Starten gehindert hat.
+In diesem Projekt habe ich gelernt, wie man mit Ansible eine komplette Serverumgebung automatisiert. Neu für mich war vor allem die Arbeit mit Rollen, YAML-Dateien und die Struktur eines Playbooks. Am Anfang hatte ich viele Probleme mit der YAML Syntax, besonders mit Einrückungen, was oft zu Fehlermeldungen geführt hat. Diese Fehler habe ich gelöst, indem ich die Struktur genau überprüft und die Fehlermeldungen Schritt für Schritt analysiert habe.
 
-Ich habe die Fehler gelöst, indem ich die Fehlermeldungen analysiert und Schritt für Schritt angepasst habe. Dabei habe ich auch KI verwendet, um schneller zu verstehen, wo das Problem liegt.
+Ein weiteres Problem war Apache, da der Server oft nicht starten konnte. Der Grund war meistens ein Fehler in der VirtualHost Konfiguration. Mit dem Befehl apache2ctl configtest konnte ich diese Fehler finden und korrigieren. Auch Git war am Anfang schwierig, da ich nicht wusste, dass man einen Token statt eines Passworts verwenden muss.
 
+Ich habe KI genutzt, um Fehler schneller zu verstehen und Lösungen zu finden, besonders bei Ansible und Apache. Ohne KI hätte ich vieles auch selbst herausfinden können, aber es hätte deutlich länger gedauert. Insgesamt habe ich viel über Server, Netzwerke und Automatisierung gelernt.
 

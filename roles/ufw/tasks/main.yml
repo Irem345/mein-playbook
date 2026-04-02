@@ -1,0 +1,20 @@
+- name: allow ssh
+  ufw:
+    rule: allow
+    port: "22"
+
+- name: allow http
+  ufw:
+    rule: allow
+    port: "80"
+
+- name: allow https
+  ufw:
+    rule: allow
+    port: "443"
+
+- name: allow ftp
+  ufw:
+    rule: allow
+    port: "21"
+    proto: tcp
