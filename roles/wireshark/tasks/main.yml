@@ -1,0 +1,10 @@
+- name: install wireshark
+  apt:
+    name: wireshark
+    state: present
+
+- name: add user to wireshark group
+  user:
+    name: ubuntu
+    groups: wireshark
+    append: yes

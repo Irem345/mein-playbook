@@ -1,0 +1,48 @@
+- name: install apache
+  apt:
+    name: apache2
+    state: present
+    update_cache: yes
+
+- name: create web directory
+  file:
+    path: /var/www/mywebsite
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: '0755'
+
+- name: create html page
+  copy:
+    dest: /var/www/mywebsite/index.html
+    content: |
+      <h1>Mein Server läuft</h1>
+      <p>Hostname: {{ ansible_hostname }}</p>
+      <p>IP: {{ ansible_default_ipv4.address }}</p>
+
+- name: create vhost config
+  copy:
+    dest: /etc/apache2/sites-available/mywebsite.conf
+    content: |
+      <VirtualHost *:80>
+          ServerName localhost
+          DocumentRoot /var/www/mywebsite
+
+          <Directory /var/www/mywebsite>
+              AllowOverride All
+              Require all granted
+          </Directory>
+
+      </VirtualHost>
+
+- name: enable site
+  command: a2ensite mywebsite.conf
+
+- name: disable default site
+  command: a2dissite 000-default.conf
+
+- name: ensure apache is running
+  service:
+    name: apache2
+    state: started
+    enabled: true

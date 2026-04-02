@@ -1,0 +1,9 @@
+- hosts: web
+  become: true
+  roles:
+    - common
+    - apache
+    - ufw
+    - nmap
+    - htop
+    - wireshark
