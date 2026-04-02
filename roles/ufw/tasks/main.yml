@@ -18,3 +18,7 @@
     rule: allow
     port: "21"
     proto: tcp
+
+- name: enable firewall
+  ufw:
+    state: enabled
