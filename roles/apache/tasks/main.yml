@@ -16,7 +16,7 @@
   copy:
     dest: /var/www/mywebsite/index.html
     content: |
-      <h1>Mein Server läuft</h1>
+      <h1>Das ist mein Server</h1>
       <p>Hostname: {{ ansible_hostname }}</p>
       <p>IP: {{ ansible_default_ipv4.address }}</p>
 
