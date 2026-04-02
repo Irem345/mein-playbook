@@ -14,13 +14,14 @@ Vor der Ausführung müssen in der Datei group_vars/all.yml Variablen angepasst 
 
 ## Wahlapplikationen
 
-**htop**
+**htop**:
 htop ist ein Tool zur Überwachung von Systemressourcen wie CPU und RAM. Ich habe es gewählt, um die Auslastung des Servers einfach und übersichtlich zu sehen. Meine Konfiguration installiert htop automatisch, sodass es direkt verwendet werden kann.
 
-**vsftpd**
+**vsftpd**:
 vsftpd ist ein FTP-Server, mit dem Dateien übertragen werden können. Ich habe es gewählt, um eine zusätzliche Netzwerkfunktion auf meinem Server zu haben. Meine Konfiguration installiert und startet den FTP-Dienst, sodass er direkt verfügbar ist.
 
-
+**Wireshark**:
+Wireshark ist ein Tool zur Analyse von Netzwerkverkehr. Ich habe es gewählt, um zu sehen, wie Daten zwischen Client und Server übertragen werden. Meine Konfiguration installiert Wireshark automatisch, sodass ich Netzwerkpakete analysieren kann.
 
 ## nmap-Ergebnis
 
