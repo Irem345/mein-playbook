@@ -45,3 +45,5 @@ Ein weiteres Problem war Apache, da der Server oft nicht starten konnte. Der Gru
 
 Ich habe KI genutzt, um Fehler schneller zu verstehen und Lösungen zu finden, besonders bei Ansible und Apache. Ohne KI hätte ich vieles auch selbst herausfinden können, aber es hätte deutlich länger gedauert. Insgesamt habe ich viel über Server, Netzwerke und Automatisierung gelernt.
 
+KI verwendet bei: Apache Konfiguration, vhost Konfiguration, Probleme lösen und ufw Konfiguration.
+
